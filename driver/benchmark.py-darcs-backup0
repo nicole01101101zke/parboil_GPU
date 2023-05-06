@@ -82,7 +82,7 @@ class Benchmark(object):
 
     def instance_check(x):
         if not isinstance(x, Benchmark):
-            raise TypeError, "argument must be an instance of Benchmark"
+            raise TypeError("argument must be an instance of Benchmark")
 
     instance_check = staticmethod(instance_check)
 

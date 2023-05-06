@@ -42,42 +42,42 @@ class FileBase(object):
         is not required to exist, then it is valid.  If the file exists,
         then ths function returns the same results as exists().  This function
         should not raise an exception."""
-        raise NotImplementedError, "'FileBase' is an abstract base class"
+        raise NotImplementedError("'FileBase' is an abstract base class")
 
     def exists(self):
         """f.exists() -> bool
 
         Test whether this file exists and is a valid file.  This function
         should not raise an exception."""
-        raise NotImplementedError, "'FileBase' is an abstract base class"
+        raise NotImplementedError("'FileBase' is an abstract base class")
 
     def isDir(self):
         """f.isDir() -> bool
 
         Test whether this FileBase object represents a directory.  This
         function should not access the file system."""
-        raise NotImplementedError, "'FileBase' is an abstract base class"
+        raise NotImplementedError("'FileBase' is an abstract base class")
 
     def isFile(self):
         """f.isFile() -> bool
 
         Test whether this FileBase object represents an ordinary file.  This
         function should not access the file system."""
-        raise NotImplementedError, "'FileBase' is an abstract base class"
+        raise NotImplementedError("'FileBase' is an abstract base class")
 
     def getPath(self):
         """f.getPath() -> string
 
         Get the path to this file.  This function should not access the
         file system."""
-        raise NotImplementedError, "'FileBase' is an abstract base class"
+        raise NotImplementedError("'FileBase' is an abstract base class")
 
     def getName(self):
         """f.getName() -> string
 
         Get the name of this file.  This function should not access the 
         file system."""
-        raise NotImplementedError, "'FileBase' is an abstract base class"
+        raise NotImplementedError("'FileBase' is an abstract base class")
 
 class File(FileBase):
     """A description of a file."""
@@ -134,7 +134,7 @@ class Directory(FileBase):
         for f in contents_list:
             assert isinstance(f, FileBase)
         if scan_func and not must_exist:
-            raise ValueError, "Invalid combination of arguments: scan_func is provided but must_exist is False"
+            raise ValueError("Invalid combination of arguments: scan_func is provided but must_exist is False")
 
         self._realContents = None
         self._interesting = scan_func
@@ -179,7 +179,7 @@ class Directory(FileBase):
         
         # Scan the directory and assign self._realContents
         if not self.exists(): 
-            raise OSError, "Directory '" + self._name + "' does not exist."
+            raise OSError("Directory '" + self._name + "' does not exist.")
         
         all_contents = os.listdir(self.getPath())
 
@@ -206,7 +206,7 @@ class Directory(FileBase):
             if path.isdir(dirpath):
                 return
             elif path.exists(dirpath):
-                raise OSError, "Path exists but is not a directory"
+                raise OSError("Path exists but is not a directory")
             else:
                 (head, tail) = path.split(dirpath)
                 if head: touch_dir(head)
@@ -233,7 +233,7 @@ class Directory(FileBase):
         or is ignored by this directory."""
         (basepathname, filename) = path.split(pathname)
         if basepathname != self.getPath():
-            raise ValueError, "Path is not a child of this directory"
+            raise ValueError("Path is not a child of this directory")
         return self.getChildByName(filename)
 
     def getChildren(self):
@@ -266,7 +266,7 @@ class Directory(FileBase):
         Adds parameter to its expected children list.  Returns None.  
         Parameter must be a FileBase obejct."""
         if not isinstance(newchild, FileBase):
-            raise TypeError, "parameter must be a FileBase object"
+            raise TypeError("parameter must be a FileBase object")
 
         self._contentsList.append(newchild)
 

@@ -107,7 +107,7 @@ def makefile(target=None, action=None, filepath=None, env={}):
                 # Error
                 return False
     else:
-        raise ValueError, "invalid action"
+        raise ValueError("invalid action")
 
     # Pass the target as the second argument
     if target: args.append(target)
@@ -142,7 +142,7 @@ def spawnwaitv(prog, args):
 
     # Check that the program is runnable
     if not os.access(prog, os.X_OK):
-        raise OSError, "Cannot execute '" + prog + "'"
+        raise OSError("Cannot execute '" + prog + "'")
 
     # Run the program
     return os.spawnve(os.P_WAIT, prog, args, env)

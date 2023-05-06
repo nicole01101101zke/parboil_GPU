@@ -84,7 +84,7 @@ class Benchmark(object):
 
     def instance_check(x):
         if not isinstance(x, Benchmark):
-            raise TypeError, "argument must be an instance of Benchmark"
+            raise TypeError("argument must be an instance of Benchmark")
 
     instance_check = staticmethod(instance_check)
 
@@ -93,7 +93,7 @@ class BenchImpl(object):
 
     def __init__(self, dir, description=None):
         if not isinstance(dir, pbf.Directory):
-            raise TypeEror, "dir must be a directory"
+            raise TypeError("dir must be a directory")
 
         self.name = dir.getName() 
         self.dir = dir
@@ -267,7 +267,7 @@ class BenchDataset(object):
     def __init__(self, dir, in_files=[], out_files=[], parameters=[],
                  description=None):
         if not isinstance(dir, pbf.Directory):
-            raise TypeError, "dir must be a pbf.Directory"
+            raise TypeError("dir must be a pbf.Directory")
 
         self.name = dir.getName()
         self.dir = dir
@@ -290,7 +290,7 @@ class BenchDataset(object):
             # This function is called to see if the input file set
             # guessed by scanning the input directory can be used
             if invalid_default_input_files:
-                raise ValueError, "Cannot infer command line when there are multiple input files in a data set\n(Fix by adding an input DESCRIPTION file)"
+                raise ValueError("Cannot infer command line when there are multiple input files in a data set\n(Fix by adding an input DESCRIPTION file)")
                 
         if input_dir.exists():
             input_descr = process.read_description_file(input_dir)
@@ -323,7 +323,7 @@ class BenchDataset(object):
         output_descr = process.read_description_file(output_dir)
         output_files = output_dir.scanAndReturnNames()
         if len(output_files) > 1:
-            raise ValueError, "Multiple output files not supported"
+            raise ValueError("Multiple output files not supported")
 
         # Concatenate input and output descriptions
         if input_descr and output_descr:
@@ -388,7 +388,7 @@ class BenchDataset(object):
         # desired
         if do_output and self.outFiles:
             if len(self.outFiles) != 1:
-                raise ValueError, "only one output file is supported"
+                 ValueError, "only one output file is supported"
 
             out_file = self.getTemporaryOutputFile(benchmark)
             args.append("-o")
@@ -450,7 +450,7 @@ def find_benchmarks():
     containing the benchmarks."""
 
     if not globals.root:
-        raise ValueError, "root directory has not been set"
+        raise ValueError("root directory has not been set")
 
     # Scan all benchmarks in the 'benchmarks' directory and
     # lazily create benchmark objects.
