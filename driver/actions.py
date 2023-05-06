@@ -4,7 +4,6 @@
 # call lower-level routines from the process or benchmark modules.
 
 import os
-from itertools import imap
 
 import process
 import benchmark
@@ -16,7 +15,7 @@ from error import ErrorType
 def benchmark_iter():
     """Iterate over the benchmarks in 'bmks'."""
     # bmks is a dictionary from str to Future(Benchmark)
-    return imap(lambda x: x.get(), globals.benchmarks.itervalues())
+    return map(lambda x: x.get(), globals.benchmarks.itervalues())
 
 def list_benchmarks():
     """List all benchmarks on standard output."""

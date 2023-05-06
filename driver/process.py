@@ -6,7 +6,7 @@ import os
 import os.path as path
 import stat
 import parboilfile as pbf
-from itertools import imap, ifilter, chain
+from itertools import ifilter, chain
 
 import globals
 

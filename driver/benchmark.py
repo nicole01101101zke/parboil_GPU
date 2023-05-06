@@ -4,7 +4,7 @@ import sys
 import os
 from os import path
 import re
-from itertools import imap, repeat, chain
+from itertools import repeat, chain
 
 import globals
 import process
@@ -36,8 +36,8 @@ class Benchmark(object):
 
         if invalid is None:
             self.path = path
-            self.impls = dict(imap(lambda i: (i.name, i), impls))
-            self.datas = dict(imap(lambda i: (i.name, i), datasets))
+            self.impls = dict(map(lambda i: (i.name, i), impls))
+            self.datas = dict(map(lambda i: (i.name, i), datasets))
             self.descr = description
 
     def createFromName(name):
