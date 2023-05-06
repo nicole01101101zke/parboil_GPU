@@ -70,5 +70,3 @@ def format_columns(text, indent=0):
             tokens = tokens[n:]
 
     return "\n".join(outls)
-            
-    

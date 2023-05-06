@@ -66,13 +66,13 @@ class benchmark:
 
   def scan_versions(self):
     for ver in os.listdir('benchmarks' + os.sep + self.name + os.sep + 'src'):
-      self.vers.append(ver) 
+      self.vers.append(ver)
 
   def scan_inputs(self):
     for datum in os.listdir('datasets' + os.sep + self.name):
-      self.data.append(datum) 
+      self.data.append(datum)
 
-  def run(self, ver, datum, pl, fake=False): 
+  def run(self, ver, datum, pl, fake=False):
     cmd = 'python parboil run %s %s %s %s' % (self.name, ver, datum, pl)
     print(cmd)
 
@@ -117,7 +117,7 @@ class benchmark:
 
             self.results.append((ver, datum, platform, ret, timing))
 
-  def get_results(self): 
+  def get_results(self):
     return self.results
 
   def get_result_string(self):

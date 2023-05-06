@@ -2,7 +2,7 @@
 class ErrorType:
   ImportError       = -1
   Success           = 0
-  CompileError      = 1  
+  CompileError      = 1
   RunFailed         = 2
   OutputMismatch    = 3
   CannotFindVersion = 4

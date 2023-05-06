@@ -52,7 +52,7 @@ class Benchmark(object):
             # Scan implementations of the benchmark
             impls = [BenchImpl.createFromDir(impl)
                      for impl in process.scan_for_benchmark_versions(bmkdir)]
-            
+
             # Scan data sets of the benchmark
             datas = [BenchDataset.createFromDir(data)
                      for data in process.scan_for_benchmark_datasets(datadir)]
@@ -63,7 +63,7 @@ class Benchmark(object):
             pass
         #except Exception, e:
         #    return Benchmark(name, invalid=e)
-        
+
     createFromName = staticmethod(createFromName)
 
     def describe(self):
@@ -95,7 +95,7 @@ class BenchImpl(object):
         if not isinstance(dir, pbf.Directory):
             raise TypeError("dir must be a directory")
 
-        self.name = dir.getName() 
+        self.name = dir.getName()
         self.dir = dir
         self.descr = description
 
@@ -112,7 +112,7 @@ class BenchImpl(object):
 
     def makefile(self, benchmark, target=None, action=None, platform=None, opt={}):
         """Run this implementation's makefile."""
-        
+
         self.platform = platform
         Benchmark.instance_check(benchmark)
 
@@ -285,13 +285,13 @@ class BenchDataset(object):
         output_dir = dir.getChildByName('output')
         #benchmark_path = path.join(globals.root, 'benchmarks', name)
 
-        
+
         def check_default_input_files():
             # This function is called to see if the input file set
             # guessed by scanning the input directory can be used
             if invalid_default_input_files:
                 raise ValueError("Cannot infer command line when there are multiple input files in a data set\n(Fix by adding an input DESCRIPTION file)")
-                
+
         if input_dir.exists():
             input_descr = process.read_description_file(input_dir)
             input_files = input_dir.scanAndReturnNames()
@@ -351,7 +351,7 @@ class BenchDataset(object):
             datasetpath = path.join(rundir.getPath(), self.name)
             filepath = path.join(datasetpath, self.outFiles[0])
             rundir.addChild(pbf.Directory(datasetpath, [pbf.File(filepath, False)]))
-        
+
         return rundir.getChildByName(self.name)
 
     def getTemporaryOutputFile(self, benchmark):
@@ -414,7 +414,7 @@ def unpack_dataset_description(descr, parameters=[], input_files=[]):
     # Initialize these to default empty strings
     parameter_text = None
     input_file_text = None
-    
+
     # Scan the description line by line
     for line in descr.split('\n'):
         m = split_at_colon.match(line)
@@ -437,7 +437,7 @@ def unpack_dataset_description(descr, parameters=[], input_files=[]):
 
 def version_scanner():
     """version_scanner() -> (path -> pbf.Directory) 
-    
+
     Return a function to find benchmark versions in the src 
     directory for the benchmark."""
 
@@ -469,7 +469,7 @@ def find_benchmarks():
     return db
 
 def _desc_file(dpath):
-    """_desc_file(dpath) 
+    """_desc_file(dpath)
     Returns a pbf.File for an optional description file in the directory dpath."""
 
     return pbf.File(path.join(dpath,'DESCRIPTION'), False)
@@ -477,12 +477,12 @@ def _desc_file(dpath):
 def benchmark_scanner():
     """benchmark_scanner -> (path -> pbf.Directory)
 
-    Returns a function which will scan a filename and create a pbf.Directory 
+    Returns a function which will scan a filename and create a pbf.Directory
     for a benchmark represented by that name."""
 
     def create_benchmark_dir(dpath):
         expected = [pbf.Directory(path.join(dpath,'src'), [], version_scanner()),
-                    pbf.Directory(path.join(dpath,'tools'), 
+                    pbf.Directory(path.join(dpath,'tools'),
                               [pbf.File(path.join(dpath,'compare-output'))]),
                     pbf.Directory(path.join(dpath,'build'), must_exist=False),
                     pbf.Directory(path.join(dpath,'run'), must_exist=False),
@@ -499,7 +499,7 @@ def dataset_scanner():
 
     def create_dataset_dir(dpath):
         simple_scan = lambda x: pbf.scan_file(x)
-        expected = [pbf.Directory(path.join(dpath,'input'), 
+        expected = [pbf.Directory(path.join(dpath,'input'),
                               [_desc_file(path.join(dpath,'input'))], simple_scan),
                     pbf.Directory(path.join(dpath,'output'), [], simple_scan),
                     _desc_file(dpath)]
@@ -511,7 +511,7 @@ def dataset_scanner():
 def dataset_repo_scanner():
     """dataset_repo_scanner -> (path -> pbf.Directory)
 
-    Returns a function which will scan a filename and create a pbf.Directory 
+    Returns a function which will scan a filename and create a pbf.Directory
     for a folder containing a dataset repository for parboil benchmarks."""
 
     benchmark_dsets_scanner = lambda x: pbf.Directory(x, [], dataset_scanner())

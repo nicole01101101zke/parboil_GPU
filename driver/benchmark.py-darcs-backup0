@@ -93,7 +93,7 @@ class BenchImpl(object):
         if not isinstance(dir, pbf.Directory):
             raise TypeEror, "dir must be a directory"
 
-        self.name = dir.getName() 
+        self.name = dir.getName()
         self.dir = dir
         self.descr = description
 

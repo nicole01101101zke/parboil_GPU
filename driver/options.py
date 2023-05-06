@@ -33,7 +33,7 @@ class OptionGetter:
 def help_options(progname, cmd, args):
     help_string = "usage: " + progname + " help [COMMAND]\nWithout parameters: list commands\nWith a parameter: Get help on COMMAND\n"
     get_help = lambda: stdout.write(help_string)
-    
+
     def run():
         if args:
             try: helpcmd = parse_mode_options[args[0]]
@@ -244,4 +244,4 @@ def parse_options(args):
     # Set up and run the option parser
     return mode(prog_name, cmd, args[2:]).run()
 
-    
+

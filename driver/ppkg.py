@@ -18,7 +18,7 @@ class Archiver:
 
   def readFilter(self):
     try:
-      f = open('ppkg.ignore', 'r') 
+      f = open('ppkg.ignore', 'r')
     except:
       "No filters."
       return
@@ -81,7 +81,7 @@ class Archiver:
         self.walk(os.path.join(top, entry))
       else:
         print("Ignoring %s" % entry)
-                
+
   def add(self, path):
     print("Adding %s ..." % path)
     if not self.dont_run:

@@ -92,11 +92,11 @@ class File(FileBase):
         self._name = path.split(fpath)[1]
 
     def exists(self):
-    	try: 
+    	try:
             return path.isfile(self.getPath())
         except OSError:
             return False
-        
+
     def valid(self):
         if self._must_exist:
             return self.exists()
@@ -111,7 +111,7 @@ class File(FileBase):
 
     def getName(self):
         return self._name
-    
+
     def open(self, mode='r', buffering=None):
         """f.open(mode, buffering) -> file object
 
@@ -149,7 +149,7 @@ class Directory(FileBase):
             return path.isdir(self.getPath())
         except OSError:
             return False # handles file-not-found case
-    
+
     def valid(self):
         if self._mustExist and not self.exists():
             return False
@@ -162,7 +162,7 @@ class Directory(FileBase):
                     if not file.valid():
                         return False
         return True
-    
+
     def isDir(self):
         return True
 
@@ -171,7 +171,7 @@ class Directory(FileBase):
 
     def getPath(self):
         return self._path
-    
+
     def getName(self):
         return self._name
 
@@ -179,12 +179,12 @@ class Directory(FileBase):
         """d.scan() -- scan the contents of the file system to find the
         contents of this directory."""
         if self._realContents is not None: return
-        
+
         # Scan the directory and assign self._realContents
-        if not self.exists(): 
+        if not self.exists():
             raise OSError("Directory '" + self._name + "' does not exist.")
         all_contents = os.listdir(self.getPath())
-        
+
     def has_file_of_name(name):
         for x in self._contentsList:
             if x.getName() == name:
@@ -193,7 +193,7 @@ class Directory(FileBase):
 
         new_contents = filter(lambda x: not has_file_of_name(x), all_contents)
 
-        self._realContents = filter(lambda x: x is not None, 
+        self._realContents = filter(lambda x: x is not None,
         	[self._interesting(path.join(self.getPath(), x)) for x in new_contents])
 
     def touch(self):
@@ -226,7 +226,7 @@ class Directory(FileBase):
                 return x
         return None
 
-    
+
     def getChildByPath(self, pathname):
         """d.getChild(filepath) -> FileBase object
 
@@ -257,7 +257,7 @@ class Directory(FileBase):
         return self._realContents
 
     def scanAndReturnNames(self):
-        """Exectues the scan operation for this directory, returning a list of 
+        """Exectues the scan operation for this directory, returning a list of
         strings representing the names of files discovered."""
 
         self.scan()
@@ -265,7 +265,7 @@ class Directory(FileBase):
 
     def addChild(self, newchild):
         """addChild(newchild)
-        Adds parameter to its expected children list.  Returns None.  
+        Adds parameter to its expected children list.  Returns None.
         Parameter must be a FileBase obejct."""
         if not isinstance(newchild, FileBase):
             raise TypeError("parameter must be a FileBase object")
@@ -274,20 +274,20 @@ class Directory(FileBase):
 
 def scan_file(fpath, directory=False, create_file=lambda x: File(x), boring=[]):
     """scan_file(path, directory=False, create_file, boring=[]) -> FileBase
-    
-    Test the file referenced by path.  Invoke creat_file on that path 
-    if it is to be noticed and returns the results, else returns None.  
-    A file is considered 'to be noticed' if its name is not in boring, 
-    and it is a directory or file if directory is True or False, respectively. 
-    This function accesses the file system to determine the file type 
-    (directory or file) and raises an OSError on inability to access.  
+
+    Test the file referenced by path.  Invoke creat_file on that path
+    if it is to be noticed and returns the results, else returns None.
+    A file is considered 'to be noticed' if its name is not in boring,
+    and it is a directory or file if directory is True or False, respectively.
+    This function accesses the file system to determine the file type
+    (directory or file) and raises an OSError on inability to access.
     """
 
     # Look for directories or regular files, depending on the 'directory'
     # parameter
     if directory: valid_test = path.isdir
     else: valid_test = path.isfile
-    
+
     # True if 'dirname' is not a boring name, and it is a directory
     fname = path.split(fpath)[1]
 

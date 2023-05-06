@@ -21,7 +21,7 @@ def list_benchmarks():
     """List all benchmarks on standard output."""
     print("Benchmarks:")
     for bmk in benchmark_iter(): print ("  " + bmk.name)
-        
+
 def describe_benchmarks():
     """Print descriptions of all benchmarks to standard output."""
     for bmk in benchmark_iter(): describe_benchmark(bmk)
@@ -63,7 +63,7 @@ def compile_benchmark(bmk, version_name, platform=None):
     except KeyError:
         print("Cannot find benchmark version")
         return
-    
+
     return impl.build(bmk, platform)
 
 def clean_benchmark(bmk, version_name=None, platform=None):
@@ -88,7 +88,7 @@ def run_benchmark(bmk, version_name, input_name, check=True, extra_opts=[], plat
     except KeyError:
         print("Cannot find benchmark version")
         return ErrorType.CannotFindVersion
-    
+
     try: data = bmk.datas[input_name]
     except KeyError:
         print("Cannot find data set")
@@ -119,7 +119,7 @@ def debug_benchmark(bmk, version_name, input_name, check=True, extra_opts=[], pl
     except KeyError:
         print("Cannot find benchmark version")
         return ErrorType.CannotFindVersion
-    
+
     try: data = bmk.datas[input_name]
     except KeyError:
         print("Cannot find data set")
