@@ -5,7 +5,7 @@
 import os
 import os.path as path
 import stat
-import parboilfile as pbf
+from . import parboilfile as pbf
 from itertools import ifilter, chain
 
 from . import globals
@@ -72,22 +72,22 @@ def makefile(target=None, action=None, filepath=None, env={}):
 
     args = ["make"]
 
-    if action is 'build':
+    if action == 'build':
         def run():
             args.append('default')
             rc = os.spawnvp(os.P_WAIT, "make", args)
             return rc == 0
-    elif action is 'clean':
+    elif action == 'clean':
         def run():
             args.append('clean')
             rc = os.spawnvp(os.P_WAIT, "make", args)
             return rc == 0
-    elif action is 'run':
+    elif action == 'run':
         def run():
             args.append('run')
             rc = os.spawnvp(os.P_WAIT, "make", args)
             return rc == 0
-    elif action is 'debug':
+    elif action == 'debug':
         def run():
             args.append('debug')
             rc = os.spawnvp(os.P_WAIT, "make", args)
