@@ -95,7 +95,7 @@ class File(FileBase):
     	try: 
             return path.isfile(self.getPath())
         except OSError:
-            return False # handles file-not-found case
+            return False
         
     def valid(self):
         if self._must_exist:
