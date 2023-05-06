@@ -8,7 +8,7 @@ import stat
 import parboilfile as pbf
 from itertools import ifilter, chain
 
-import globals
+from . import globals
 
 #def scan_for_benchmarks():
 #    """Returns a file scanner for the benchmarks directory repository to find

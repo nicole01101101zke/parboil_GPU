@@ -5,12 +5,12 @@
 
 import os
 
-import process
-import benchmark
-import globals
-from text import format_columns
+from . import process
+from . import benchmark
+from . import globals
+from .text import format_columns
 
-from error import ErrorType
+from .error import ErrorType
 
 def benchmark_iter():
     """Iterate over the benchmarks in 'bmks'."""

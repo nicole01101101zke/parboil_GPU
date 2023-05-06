@@ -6,12 +6,12 @@ from os import path
 import re
 from itertools import repeat, chain
 
-import globals
-import process
-import parboilfile as pbf
-from futures import Future
+from . import globals
+from . import process
+from . import parboilfile as pbf
+from .futures import Future
 
-from error import ErrorType
+from .error import ErrorType
 
 class Benchmark(object):
     """A benchmark.

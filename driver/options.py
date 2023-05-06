@@ -9,8 +9,8 @@
 from sys import stdout
 from optparse import OptionParser
 
-import actions
-import globals
+from . import actions
+from . import globals
 
 def invalid_option_message(progname, cmd, args):
     print("Unrecognized command '" + cmd + "'")
