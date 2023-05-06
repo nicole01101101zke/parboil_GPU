@@ -2,7 +2,6 @@
 
 import sys
 import os
-from itertools import imap
 
 import globals
 import actions
