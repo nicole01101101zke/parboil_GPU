@@ -59,7 +59,7 @@ class Archiver:
     self.top = top
     os.chdir(path)
     if (len(self.benchmarks) == 0):
-    	self.walk(dir)
+      self.walk(dir)
     else:
       self.walk_benchmarks(dir)
     self.close()
@@ -77,11 +77,11 @@ class Archiver:
 
   def walk_benchmarks(self, top):
     for entry in os.listdir(top):
-    	if entry in self.benchmarks:
-    		self.walk(os.path.join(top, entry))
-    	else:
-    		print("Ignoring %s" % entry)
-
+      if entry in self.benchmarks:
+        self.walk(os.path.join(top, entry))
+      else:
+        print("Ignoring %s" % entry)
+                
   def add(self, path):
     print("Adding %s ..." % path)
     if not self.dont_run:
