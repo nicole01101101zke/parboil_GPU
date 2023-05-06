@@ -3,7 +3,7 @@
 import sys
 import os
 
-import globals
+from . import globals
 import actions
 import options
 import parboilfile
