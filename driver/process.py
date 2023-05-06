@@ -124,7 +124,7 @@ def makefile(target=None, action=None, filepath=None, env={}):
     # Print a status message, if running in verbose mode
     if globals.verbose:
 
-        print "Running '" + " ".join(args) + "' in " + os.getcwd()
+        print("Running '" + " ".join(args) + "' in " + os.getcwd())
 
     # Run the makefile and return result info
     return run()
@@ -138,7 +138,7 @@ def spawnwaitv(prog, args):
 
     # Print a status message if running in verbose mode
     if globals.verbose:
-        print "Running '" + " ".join(args) + "' in " + os.getcwd()
+        print("Running '" + " ".join(args) + "' in " + os.getcwd())
 
     # Check that the program is runnable
     if not os.access(prog, os.X_OK):

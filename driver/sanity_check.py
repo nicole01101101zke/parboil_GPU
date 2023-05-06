@@ -74,7 +74,7 @@ class benchmark:
 
   def run(self, ver, datum, pl, fake=False): 
     cmd = 'python parboil run %s %s %s %s' % (self.name, ver, datum, pl)
-    print cmd
+    print(cmd)
 
     if fake: return 0, ''
 
@@ -90,11 +90,11 @@ class benchmark:
       for cat in self.pbTimerCats:
         if line.find(cat) != -1:
           line = " ++ %s" % line
-          print line,
+          print(line),
           timing += line
           isCat = True
           break
-      if not isCat: print line,
+      if not isCat: print(line),
 
     sts = os.waitpid(p.pid, 0)[1]
     # return p.returncode, timing
@@ -139,7 +139,7 @@ class benchmark:
 
   def write_result(self, out):
     x = self.get_result_string()
-    print x,
+    print (x),
     out.write(x)
     out.flush()
 

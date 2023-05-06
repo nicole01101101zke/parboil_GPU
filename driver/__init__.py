@@ -13,7 +13,7 @@ import benchmark
 
 def run():
     # Print a banner message
-    print ("Parboil parallel benchmark suite, version 0.2")
+    print("Parboil parallel benchmark suite, version 0.2")
     print()
     
     # Global variable setup
