@@ -4,11 +4,11 @@ import sys
 import os
 
 from . import globals
-import actions
-import options
-import parboilfile
-import process
-import benchmark
+from . import actions
+from . import options
+from . import parboilfile
+from . import process
+from . import benchmark
 
 def run():
     # Print a banner message
