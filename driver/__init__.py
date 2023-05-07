@@ -23,14 +23,13 @@ def run():
     python_path = (os.path.join(globals.root,'common','python') +
                    ":" +
                    os.environ.get('PYTHONPATH',""))
-    print(python_path)
 
     bmks = parboilfile.Directory(os.path.join(globals.root,'benchmarks'),
                      [], benchmark.benchmark_scanner())
 
 
     globals.benchdir = bmks
-    print(globals.benchdir)
+    print(globals.benchdir.getPath())
 
     globals.datadir =  parboilfile.Directory(
                          os.path.join(globals.root, 'datasets'), [],
