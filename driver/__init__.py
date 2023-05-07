@@ -16,19 +16,21 @@ def run():
 
     # Global variable setup
     if not globals.root:
-      globals.root = os.path.abspath(os.path.join(os.getcwd(), ".."))
+      globals.root = os.getcwd()
 
     print(globals.root)
 
     python_path = (os.path.join(globals.root,'common','python') +
                    ":" +
                    os.environ.get('PYTHONPATH',""))
+    print(python_path)
 
     bmks = parboilfile.Directory(os.path.join(globals.root,'benchmarks'),
                      [], benchmark.benchmark_scanner())
 
 
     globals.benchdir = bmks
+    print(globals.benchdir)
 
     globals.datadir =  parboilfile.Directory(
                          os.path.join(globals.root, 'datasets'), [],
