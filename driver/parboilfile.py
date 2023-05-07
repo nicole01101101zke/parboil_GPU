@@ -92,10 +92,9 @@ class File(FileBase):
         self._name = path.split(fpath)[1]
 
     def exists(self):
-    	try:
+        try:
             return path.isfile(self.getPath())
-        except OSError:
-            return False
+        except OSError: return False
 
     def valid(self):
         if self._must_exist:
