@@ -458,13 +458,22 @@ def find_benchmarks():
 
     try:
         globals.benchdir.scan()
+    except OSError:
+        sys.stdout.write("1Benchmark directory not found!\n\n")
+        return {}
+
+    try:
         globals.datadir.scan()
-        sys.stdout.write(globals.benchdir)
+    except OSError:
+        sys.stdout.write("2Benchmark directory not found!\n\n")
+        return {}
+
+    try:
         for bmkdir in globals.benchdir.getScannedChildren():
             bmk = Future(lambda bmkdir=bmkdir: Benchmark.createFromName(bmkdir.getName()))
             db[bmkdir.getName()] = bmk
-    except OSError as e:
-        sys.stdout.write("Benchmark directory not found!\n\n")
+    except OSError:
+        sys.stdout.write("3Benchmark directory not found!\n\n")
         return {}
 
     return db
