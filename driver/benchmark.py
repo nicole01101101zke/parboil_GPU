@@ -459,7 +459,7 @@ def find_benchmarks():
     try:
         globals.benchdir.scan()
         globals.datadir.scan()
-        print(globals.benchdir)
+        sys.stdout.write(globals.benchdir)
         for bmkdir in globals.benchdir.getScannedChildren():
             bmk = Future(lambda bmkdir=bmkdir: Benchmark.createFromName(bmkdir.getName()))
             db[bmkdir.getName()] = bmk
