@@ -190,10 +190,10 @@ class Directory(FileBase):
                     return True
             return False
 
-        new_contents = filter(lambda x: not has_file_of_name(x), all_contents)
+        new_contents = list(filter(lambda x: not has_file_of_name(x), all_contents))
 
-        self._realContents = filter(lambda x: x is not None,
-        	[self._interesting(path.join(self.getPath(), x)) for x in new_contents])
+        self._realContents = list(filter(lambda x: x is not None,
+        	[self._interesting(path.join(self.getPath(), x)) for x in new_contents]))
 
     def touch(self):
         """d.touch() -- create this directory if it doesn't exist.
