@@ -462,7 +462,7 @@ def find_benchmarks():
         for bmkdir in globals.benchdir.getScannedChildren():
             bmk = Future(lambda bmkdir=bmkdir: Benchmark.createFromName(bmkdir.getName()))
             db[bmkdir.getName()] = bmk
-    except OSError, e:
+    except OSError as e:
         sys.stdout.write("Benchmark directory not found!\n\n")
         return {}
 
