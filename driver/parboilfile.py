@@ -182,7 +182,8 @@ class Directory(FileBase):
         # Scan the directory and assign self._realContents
         if not self.exists():
             raise OSError("Directory '" + self._name + "' does not exist.")
-        all_contents = os.listdir(self.getPath())
+        self._realContents = os.listdir(self.getPath())
+        # all_contents = os.listdir(self.getPath())
 
     def has_file_of_name(name):
         for x in self._contentsList:
@@ -190,7 +191,7 @@ class Directory(FileBase):
                 return True
             return False
 
-        new_contents = filter(lambda x: not has_file_of_name(x), all_contents)
+        new_contents = filter(lambda x: not has_file_of_name(x), self._realContents)
 
         self._realContents = filter(lambda x: x is not None,
         	[self._interesting(path.join(self.getPath(), x)) for x in new_contents])
