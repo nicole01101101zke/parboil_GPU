@@ -144,7 +144,7 @@ class Directory(FileBase):
         self._name = path.split(dpath)[1]
 
     def exists(self):
-    	try:
+        try:
             return path.isdir(self.getPath())
         except OSError:
             return False # handles file-not-found case
