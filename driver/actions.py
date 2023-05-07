@@ -15,7 +15,7 @@ from .error import ErrorType
 def benchmark_iter():
     """Iterate over the benchmarks in 'bmks'."""
     # bmks is a dictionary from str to Future(Benchmark)
-    return map(lambda x: x.get(), globals.benchmarks.itervalues())
+    return map(lambda x: x.get(), globals.benchmarks.values())
 
 def list_benchmarks():
     """List all benchmarks on standard output."""
@@ -79,7 +79,7 @@ def clean_benchmark(bmk, version_name=None, platform=None):
         impl.clean(bmk, platform)
     else:
         # Clean all versions
-        for impl in bmk.impls.itervalues():
+        for impl in bmk.impls.values():
             impl.clean(bmk, platform)
 
 def run_benchmark(bmk, version_name, input_name, check=True, extra_opts=[], platform=None):
