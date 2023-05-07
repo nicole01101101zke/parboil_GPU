@@ -17,7 +17,7 @@ def run():
 
     # Global variable setup
     if not globals.root:
-      globals.root = os.getcwd()
+      globals.root = os.path.abspath(os.path.join(os.getcwd(), ".."))
 
     python_path = (os.path.join(globals.root,'common','python') +
                    ":" +

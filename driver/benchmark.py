@@ -77,8 +77,8 @@ class Benchmark(object):
         else:
             header = self.descr
 
-        impls = " ".join([impl.name for impl in self.impls.itervalues()])
-        datas = " ".join([data.name for data in self.datas.itervalues()])
+        impls = " ".join([impl.name for impl in self.impls.values()])
+        datas = " ".join([data.name for data in self.datas.values()])
 
         return header + "\nVersions: " + impls + "\nData sets: " + datas
 

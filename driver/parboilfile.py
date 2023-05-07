@@ -126,8 +126,8 @@ class Directory(FileBase):
 
         Create a Directory object.  Files given as part of contents_list
         are added to directory.  Any other files in the directory are
-        passed (by full path) to the scanner function to decide whether to 
-        include them.  The scanner function should return None if a file is 
+        passed (by full path) to the scanner function to decide whether to
+        include them.  The scanner function should return None if a file is
         to be ignored or a FileBase object if the file is to be noticed.
 
         This function does not access the file system."""
