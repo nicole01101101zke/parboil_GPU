@@ -115,8 +115,8 @@ class File(FileBase):
         """f.open(mode, buffering) -> file object
 
         Open the file."""
-        if buffering is None: return file(self.getPath(), mode)
-        else: return file(self.getPath(), mode, buffering)
+        if buffering is None: return open(self.getPath(), mode)
+        else: return open(self.getPath(), mode, buffering)
 
 class Directory(FileBase):
     """A description of a directory."""
