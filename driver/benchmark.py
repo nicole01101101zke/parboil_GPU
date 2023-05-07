@@ -436,9 +436,9 @@ def unpack_dataset_description(descr, parameters=[], input_files=[]):
     return (parameters, input_files, descr)
 
 def version_scanner():
-    """version_scanner() -> (path -> pbf.Directory) 
+    """version_scanner() -> (path -> pbf.Directory)
 
-    Return a function to find benchmark versions in the src 
+    Return a function to find benchmark versions in the src
     directory for the benchmark."""
 
     return lambda x: pbf.scan_file(x, True, lambda y: pbf.Directory(y), ['.svn'])

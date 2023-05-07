@@ -75,7 +75,7 @@ class FileBase(object):
     def getName(self):
         """f.getName() -> string
 
-        Get the name of this file.  This function should not access the 
+        Get the name of this file.  This function should not access the
         file system."""
         raise NotImplementedError("'FileBase' is an abstract base class")
 
@@ -84,7 +84,7 @@ class File(FileBase):
     def __init__(self, fpath, must_exist = True):
         """File(path, must_exist)
 
-        Create a description of a file, containing its path and whether or 
+        Create a description of a file, containing its path and whether or
         not it must exist.  This function does not access the file system."""
 
         self._path = fpath
