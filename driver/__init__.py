@@ -13,11 +13,12 @@ from . import benchmark
 def run():
     # Print a banner message
     print("Parboil parallel benchmark suite, version 0.2")
-    print()
 
     # Global variable setup
     if not globals.root:
       globals.root = os.path.abspath(os.path.join(os.getcwd(), ".."))
+
+    print(globals.root)
 
     python_path = (os.path.join(globals.root,'common','python') +
                    ":" +
