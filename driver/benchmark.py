@@ -5,6 +5,7 @@ import os
 from os import path
 import re
 from itertools import repeat, chain
+from functools import reduce
 
 from . import globals
 from . import process
