@@ -91,7 +91,9 @@ def run_benchmark(bmk, version_name, input_name, check=True, extra_opts=[], plat
         print("Cannot find benchmark version")
         return ErrorType.CannotFindVersion
 
-    try: data = bmk.datas[input_name]
+    try:
+        print(input_name)
+        data = bmk.datas[input_name]
     except KeyError:
         print("Cannot find data set")
         return ErrorType.CannotFindDataSet
