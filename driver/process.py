@@ -118,7 +118,7 @@ def makefile(target=None, action=None, filepath=None, env={}):
         args.append(filepath)
 
     # Pass variables
-    for (k,v) in env.iteritems():
+    for (k,v) in env.items():
         args.append(k + "=" + v)
 
     # Print a status message, if running in verbose mode
