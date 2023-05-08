@@ -60,10 +60,10 @@ def with_benchmark_named(name, action):
 def compile_benchmark(bmk, version_name, platform=None):
     """Compile the benchmark 'bmk'."""
     try:
+        print("fuck"+version_name)
         impl = bmk.impls[version_name]
-        print(version_name+"fuck")
     except KeyError:
-        print("1Cannot find benchmark version")
+        print("Cannot find benchmark version")
         return
 
     return impl.build(bmk, platform)
