@@ -149,7 +149,7 @@ int main( int argc, char** argv)
 
   cl_int clStatus;
   cl_device_id clDevice;
-  cl_device_type deviceType = CL_DEVICE_TYPE_GPU;
+  cl_device_type deviceType = CL_DEVICE_TYPE_CPU;
   cl_platform_id clPlatform;
   OCL_ERRCK_RETVAL(clGetPlatformIDs(1,&clPlatform,NULL));
   cl_context_properties clCps[3] = {CL_CONTEXT_PLATFORM,(cl_context_properties)clPlatform,0};
@@ -159,7 +159,7 @@ int main( int argc, char** argv)
     exit(1);
   }
 
-  cl_context clContext = clCreateContextFromType(clCps,CL_DEVICE_TYPE_GPU,NULL,NULL,&clStatus);
+  cl_context clContext = clCreateContextFromType(clCps,CL_DEVICE_TYPE_CPU,NULL,NULL,&clStatus);
   OCL_ERRCK_VAR(clStatus);
   cl_command_queue clCommandQueue = clCreateCommandQueue(clContext,clDevice,CL_QUEUE_PROFILING_ENABLE,&clStatus);
   OCL_ERRCK_VAR(clStatus);
@@ -213,7 +213,7 @@ int main( int argc, char** argv)
   OCL_ERRCK_RETVAL(clEnqueueWriteBuffer(clCommandQueue,d_color,CL_TRUE,0,num_of_nodes*sizeof(int),color,0,NULL,NULL));
   OCL_ERRCK_RETVAL(clEnqueueWriteBuffer(clCommandQueue,d_cost,CL_TRUE,0,num_of_nodes*sizeof(int),h_cost,0,NULL,NULL));
 
-  printf("Starting GPU kernel\n");
+  printf("Starting CPU kernel\n");
   pb_SwitchToTimer(&timers, pb_TimerID_KERNEL);
   int num_of_blocks; 
   int num_of_threads_per_block;
@@ -269,7 +269,7 @@ int main( int argc, char** argv)
     k++;
   } while(1);
   pb_SwitchToTimer(&timers, pb_TimerID_COPY);
-  printf("GPU kernel done\n");
+  printf("CPU kernel done\n");
 
   // copy result from device to host
   OCL_ERRCK_RETVAL(clEnqueueReadBuffer(clCommandQueue,d_cost,CL_TRUE,0,num_of_nodes*sizeof(int),h_cost,0,NULL,NULL));
