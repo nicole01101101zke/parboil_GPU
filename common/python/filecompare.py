@@ -124,7 +124,7 @@ class Compare(CompareMonad):
 	"""Read an item from both input files and compare it."""
 
 	def __init__(self,
-			read = open.read(),
+			read = open(),
 			equal = lambda x, y: x == y,
 			message = "Output does not match the expected output"):
 		self.read = read
