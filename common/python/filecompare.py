@@ -133,7 +133,10 @@ class Compare(CompareMonad):
 
 	def run(self, ref_file, out_file):
 		try:
-			x = self.read(ref_file)
+			f = open(ref_file, 'r')
+			x = f.read()
+			f.close()
+			# x = self.read(ref_file)
 		except ValueError:
 			sys.stderr.write("Malformed reference file!\n")
 			return (False, None)
@@ -141,7 +144,10 @@ class Compare(CompareMonad):
 			sys.stderr.write("Unexpected end of reference file!\n")
 			return (False, None)
 		try:
-			y = self.read(out_file)
+			f = open(out_file, 'r')
+			y = f.read()
+			f.close()
+			# y = self.read(out_file)
 		except ValueError:
 			sys.stderr.write("Malformed output file;\n")
 			sys.stderr.write('\n')
