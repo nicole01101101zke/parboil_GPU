@@ -4,22 +4,22 @@ import struct
 
 def uint16(f):
 	"""Read a 16-bit unsigned integer from f."""
-        chars = f.read(2)
-	if len(chars) != 2: raise ValueError, "Unexpected end of file"
+	chars = f.read(2)
+	if len(chars) != 2: raise ValueError("Unexpected end of file")
 	[c, c2] = chars
 	return ord(c) + (ord(c2) << 8)
 
 def uint32(f):
 	"""Read a 32-bit unsigned integer from f."""
 	chars = f.read(4)
-	if len(chars) != 4: raise ValueError, "Unexpected end of file"
+	if len(chars) != 4: raise ValueError("Unexpected end of file")
 	[c, c2, c3, c4] = chars
 	return ord(c) + (ord(c2) << 8) + (ord(c3) << 16) + (ord(c4) << 24)
 
 def float(f):
 	"""Read a floating-point number from f."""
 	s = f.read(4)
-	if len(s) != 4: raise ValueError, "Unexpected end of file"
+	if len(s) != 4: raise ValueError("Unexpected end of file")
 	(n,) = struct.unpack("<f", s)
 	return n
 
