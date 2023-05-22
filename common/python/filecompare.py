@@ -133,7 +133,7 @@ class Compare(CompareMonad):
 
 	def run(self, ref_file, out_file):
 		try:
-			f = open(ref_file, 'r')
+			f = open(ref_file.name, 'r')
 			x = f.read()
 			f.close()
 			# x = self.read(ref_file)
@@ -144,7 +144,7 @@ class Compare(CompareMonad):
 			sys.stderr.write("Unexpected end of reference file!\n")
 			return (False, None)
 		try:
-			f = open(out_file, 'r')
+			f = open(out_file.name, 'r')
 			y = f.read()
 			f.close()
 			# y = self.read(out_file)
