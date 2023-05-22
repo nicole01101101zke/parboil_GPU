@@ -33,10 +33,10 @@ def many_uint16(count):
         16-bit unsigned integers from f."""
         def read(f):
                 s = f.read(2*count)
-		if len(s) != 2*count:
-			raise ValueError, "Unexpected end of file"
-                ns = struct.unpack("<%dH" % count, s)
-                return ns
+        if len(s) != 2*count:
+            raise ValueError("Unexpected end of file")
+            ns = struct.unpack("<%dH" % count, s)
+            return ns
         return read
 
 def many_float(count):
@@ -44,16 +44,16 @@ def many_float(count):
         floats from f."""
         def read(f):
                 s = f.read(4*count)
-		if len(s) != 4*count:
-			raise ValueError, "Unexpected end of file"
-                floats = struct.unpack("<%df" % count, s)
-                return floats
+        if len(s) != 4*count:
+            raise ValueError("Unexpected end of file")
+            floats = struct.unpack("<%df" % count, s)
+            return floats
         return read
 
 def eof(f):
 	"""Read the end of file 'f'.  A ValueError is raised if anything
 	other than EOF is read from the file."""
 	if f.readline() == "": return None
-	else: raise ValueError, "Expecting end of file"
+	else: raise ValueError("Expecting end of file")
 
 
