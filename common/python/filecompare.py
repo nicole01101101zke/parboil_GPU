@@ -17,7 +17,7 @@ class CompareMonad(object):
 # The >>= operator.  Executes 'fst', then executes 'snd' with the result
 # of 'fst'.
 class Bind(CompareMonad):
-	
+
 	def __init__(self, fst, snd):
 		CompareMonad.checkType(fst)
 		self.fst = fst
@@ -124,7 +124,7 @@ class Compare(CompareMonad):
 	"""Read an item from both input files and compare it."""
 
 	def __init__(self,
-			read = file.read,
+			read = open.read,
 			equal = lambda x, y: x == y,
 			message = "Output does not match the expected output"):
 		self.read = read
@@ -159,7 +159,7 @@ class Compare(CompareMonad):
 			return (False, None)
 
 def open_or_abort(filename):
-	try: f = file(filename, "r")
+	try: f = open(filename, "r")
 	except:
 		sys.stderr.write("Cannot open file '" + filename + "'\n")
 		sys.exit(-1)
