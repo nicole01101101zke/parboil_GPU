@@ -50,7 +50,7 @@ int getOpenCLDevice(cl_platform_id *platform, cl_device_id *device, cl_device_ty
       va_start(paramList, numRequests);
       for (int i = 0; (i < numRequests) && canSatisfy ; ++i) {
       
-        cl_device_info devReq = va_arg( paramList, cl_device_info );  
+        cl_device_info devReq = va_arg( paramList, cl_device_info );
         cl_bool clInfoBool;
         size_t infoRetSize = sizeof(cl_bool);
         
