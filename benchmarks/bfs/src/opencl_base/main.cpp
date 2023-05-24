@@ -153,7 +153,7 @@ int main( int argc, char** argv)
   cl_platform_id clPlatform;
   OCL_ERRCK_RETVAL(clGetPlatformIDs(1,&clPlatform,NULL));
   cl_context_properties clCps[3] = {CL_CONTEXT_PLATFORM,(cl_context_properties)clPlatform,0};
-  int deviceFound = getOpenCLDevice(&clPlatform, &clDevice, &deviceType, 1);
+  int deviceFound = getOpenCLDevice(&clPlatform, &clDevice, &deviceType, 0);
   if (deviceFound < 0) {
     fprintf(stderr, "No suitable device was found\n");
     exit(1);
