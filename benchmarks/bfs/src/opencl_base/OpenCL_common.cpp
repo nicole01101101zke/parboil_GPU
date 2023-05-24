@@ -253,7 +253,7 @@ char* oclLoadProgSource(const char* cFilename, const char* cPreamble, size_t* sz
 
     // open the OpenCL source code file
     #ifdef _WIN32   // Windows version
-        if(fopen_s(&pFileStream, cFilename, "rb") != 0) 
+        if(fopen_s(&pFileStream, cFilename, "rb") != 0)
         {       
             return NULL;
         }
