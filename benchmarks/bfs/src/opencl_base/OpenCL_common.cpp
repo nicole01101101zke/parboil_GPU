@@ -39,7 +39,7 @@ int getOpenCLDevice(cl_platform_id *platform, cl_device_id *device, cl_device_ty
       
       if (reqDeviceType != NULL) {
         OCL_SIMPLE_ERRCK_RETVAL( clGetDeviceInfo(clDevice, CL_DEVICE_TYPE, sizeof(cl_device_type), &clDeviceType, NULL));
-        fprintf(stderr, "  Devices type %s\n", clDeviceType);
+        fprintf(stderr, "  Devices type %s\n", &clDeviceType);
 		if (*reqDeviceType != CL_DEVICE_TYPE_ALL) {
           if (*reqDeviceType != clDeviceType) {
             canSatisfy = false;
