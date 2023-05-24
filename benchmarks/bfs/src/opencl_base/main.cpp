@@ -178,7 +178,7 @@ int main( int argc, char** argv)
   OCL_ERRCK_RETVAL(clBuildProgram(clProgram,1,&clDevice,clOptions,NULL,NULL));
 
   // Uncomment to view build log from compiler for debugging
-  /* 
+
   char *build_log;
   size_t ret_val_size;
   clStatus = clGetProgramBuildInfo(clProgram, clDevice, CL_PROGRAM_BUILD_LOG, 0, NULL, &ret_val_size);  
@@ -187,7 +187,6 @@ int main( int argc, char** argv)
   // there's no information in the reference whether the string is 0 terminated or not
   build_log[ret_val_size] = '\0';
   printf("%s\n", build_log );
-  */
 
   cl_kernel BFS_kernel = clCreateKernel(clProgram,"BFS_kernel",&clStatus);
   OCL_ERRCK_VAR(clStatus);
@@ -231,63 +230,63 @@ int main( int argc, char** argv)
   OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,5,sizeof(cl_mem),(void*)&d_cost));
   OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,6,sizeof(cl_mem),(void*)&tail));
 
-  do
-  {
-    OCL_ERRCK_RETVAL(clEnqueueReadBuffer(clCommandQueue,tail,CL_TRUE,0,sizeof(int),&num_t,0,NULL,NULL));
-    OCL_ERRCK_RETVAL(clEnqueueWriteBuffer(clCommandQueue,tail,CL_TRUE,0,sizeof(int),&zero,0,NULL,NULL));
+  // do
+  // {
+  //   OCL_ERRCK_RETVAL(clEnqueueReadBuffer(clCommandQueue,tail,CL_TRUE,0,sizeof(int),&num_t,0,NULL,NULL));
+  //   OCL_ERRCK_RETVAL(clEnqueueWriteBuffer(clCommandQueue,tail,CL_TRUE,0,sizeof(int),&zero,0,NULL,NULL));
 
-    if(num_t == 0){//frontier is empty
-      break;
-    }
+  //   if(num_t == 0){//frontier is empty
+  //     break;
+  //   }
 
-    num_of_blocks = (int)ceil(num_t/(double)MAX_THREADS_PER_BLOCK); 
-    num_of_threads_per_block = num_t > MAX_THREADS_PER_BLOCK ? MAX_THREADS_PER_BLOCK : num_t;
+  //   num_of_blocks = (int)ceil(num_t/(double)MAX_THREADS_PER_BLOCK); 
+  //   num_of_threads_per_block = num_t > MAX_THREADS_PER_BLOCK ? MAX_THREADS_PER_BLOCK : num_t;
 
-    size_t grid[1] = {num_of_blocks*num_of_threads_per_block};
-    size_t block[1] = {num_of_threads_per_block};
+  //   size_t grid[1] = {num_of_blocks*num_of_threads_per_block};
+  //   size_t block[1] = {num_of_threads_per_block};
 
 
-    OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,7,sizeof(int),(void*)&num_t));
-    OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,9,sizeof(int),(void*)&k));
-    OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,10,sizeof(int),NULL));
-    OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,11,LOCAL_MEM_SIZE*sizeof(int),NULL));
-    OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,12,sizeof(int),NULL));
-    if(k%2 == 0){
-      int gray = GRAY0;
-      OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,0,sizeof(cl_mem),(void*)&d_q1));
-      OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,1,sizeof(cl_mem),(void*)&d_q2));
-      OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,8,sizeof(int),(void*)&gray));
-    }
-    else{
-      int gray = GRAY1;
-      OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,0,sizeof(cl_mem),(void*)&d_q2));
-      OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,1,sizeof(cl_mem),(void*)&d_q1));
-      OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,8,sizeof(int),(void*)&gray));
-    }
-    OCL_ERRCK_RETVAL(clEnqueueNDRangeKernel(clCommandQueue,BFS_kernel,1,0,grid,block,0,0,0));
-    OCL_ERRCK_RETVAL(clFinish(clCommandQueue));
-    k++;
-  } while(1);
-  pb_SwitchToTimer(&timers, pb_TimerID_COPY);
-  printf("CPU kernel done\n");
+  //   OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,7,sizeof(int),(void*)&num_t));
+  //   OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,9,sizeof(int),(void*)&k));
+  //   OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,10,sizeof(int),NULL));
+  //   OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,11,LOCAL_MEM_SIZE*sizeof(int),NULL));
+  //   OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,12,sizeof(int),NULL));
+  //   if(k%2 == 0){
+  //     int gray = GRAY0;
+  //     OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,0,sizeof(cl_mem),(void*)&d_q1));
+  //     OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,1,sizeof(cl_mem),(void*)&d_q2));
+  //     OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,8,sizeof(int),(void*)&gray));
+  //   }
+  //   else{
+  //     int gray = GRAY1;
+  //     OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,0,sizeof(cl_mem),(void*)&d_q2));
+  //     OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,1,sizeof(cl_mem),(void*)&d_q1));
+  //     OCL_ERRCK_RETVAL(clSetKernelArg(BFS_kernel,8,sizeof(int),(void*)&gray));
+  //   }
+  //   OCL_ERRCK_RETVAL(clEnqueueNDRangeKernel(clCommandQueue,BFS_kernel,1,0,grid,block,0,0,0));
+  //   OCL_ERRCK_RETVAL(clFinish(clCommandQueue));
+  //   k++;
+  // } while(1);
+  // pb_SwitchToTimer(&timers, pb_TimerID_COPY);
+  // printf("CPU kernel done\n");
 
-  // copy result from device to host
-  OCL_ERRCK_RETVAL(clEnqueueReadBuffer(clCommandQueue,d_cost,CL_TRUE,0,num_of_nodes*sizeof(int),h_cost,0,NULL,NULL));
-  OCL_ERRCK_RETVAL(clEnqueueReadBuffer(clCommandQueue,d_color,CL_TRUE,0,num_of_nodes*sizeof(int),color,0,NULL,NULL));
+  // // copy result from device to host
+  // OCL_ERRCK_RETVAL(clEnqueueReadBuffer(clCommandQueue,d_cost,CL_TRUE,0,num_of_nodes*sizeof(int),h_cost,0,NULL,NULL));
+  // OCL_ERRCK_RETVAL(clEnqueueReadBuffer(clCommandQueue,d_color,CL_TRUE,0,num_of_nodes*sizeof(int),color,0,NULL,NULL));
 
-  OCL_ERRCK_RETVAL(clReleaseMemObject(d_graph_nodes));
-  OCL_ERRCK_RETVAL(clReleaseMemObject(d_graph_edges));
-  OCL_ERRCK_RETVAL(clReleaseMemObject(d_color));
-  OCL_ERRCK_RETVAL(clReleaseMemObject(d_cost));
-  OCL_ERRCK_RETVAL(clReleaseMemObject(tail));
-  //Store the result into a file
-  pb_SwitchToTimer(&timers, pb_TimerID_IO);
-  FILE *fp = fopen(params->outFile,"w");
-  fprintf(fp, "%d\n", num_of_nodes);
-  int j = 0;
-  for(j=0;j<num_of_nodes;j++)
-    fprintf(fp,"%d %d\n",j,h_cost[j]);
-  fclose(fp);
+  // OCL_ERRCK_RETVAL(clReleaseMemObject(d_graph_nodes));
+  // OCL_ERRCK_RETVAL(clReleaseMemObject(d_graph_edges));
+  // OCL_ERRCK_RETVAL(clReleaseMemObject(d_color));
+  // OCL_ERRCK_RETVAL(clReleaseMemObject(d_cost));
+  // OCL_ERRCK_RETVAL(clReleaseMemObject(tail));
+  // //Store the result into a file
+  // pb_SwitchToTimer(&timers, pb_TimerID_IO);
+  // FILE *fp = fopen(params->outFile,"w");
+  // fprintf(fp, "%d\n", num_of_nodes);
+  // int j = 0;
+  // for(j=0;j<num_of_nodes;j++)
+  //   fprintf(fp,"%d %d\n",j,h_cost[j]);
+  // fclose(fp);
   // cleanup memory
   free(h_graph_nodes);
   free(h_graph_edges);
