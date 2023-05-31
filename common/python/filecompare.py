@@ -1,6 +1,7 @@
 # (c) Copyright 2007 The Board of Trustees of the University of Illinois.
 
 import sys
+import math
 
 # A monad for comparing two files.  Comparing proceeds until the first
 # mismatch occurs, at which point comparison stops and the error is
@@ -125,7 +126,7 @@ class Compare(CompareMonad):
 
 	def __init__(self,
 			# read = open(),
-			equal = lambda x, y: x == y,
+			equal = lambda x, y : math.fabs(x - y) < 0.000001,
 			message = "Output does not match the expected output"):
 		# self.read = read
 		self.equal = equal
