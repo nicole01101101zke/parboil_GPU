@@ -154,7 +154,7 @@ class Compare(CompareMonad):
 			return (False, None)
 
 		# Compare reference data to result data
-		if math.fabs(x - y) < 0.0000001:
+		if x == y:
 			return (True, x)
 		else:
 			sys.stderr.write(self.msg)
