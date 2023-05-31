@@ -123,7 +123,8 @@ class For_(CompareMonad):
 # returns the value.
 class Compare(CompareMonad):
 	"""Read an item from both input files and compare it."""
-	def __init__(self, msg):
+	def __init__(self, read, msg):
+		self.read = read
 		self.msg = msg
 
 			# read = open(),
@@ -135,10 +136,7 @@ class Compare(CompareMonad):
 
 	def run(self, ref_file, out_file):
 		try:
-			f = open(ref_file.name, 'r')
-			x = f.read()
-			f.close()
-			# x = self.read(ref_file)
+			x = self.read(ref_file)
 		except ValueError:
 			sys.stderr.write("Malformed reference file!\n")
 			return (False, None)
@@ -146,10 +144,7 @@ class Compare(CompareMonad):
 			sys.stderr.write("Unexpected end of reference file!\n")
 			return (False, None)
 		try:
-			f = open(out_file.name, 'r')
-			y = f.read()
-			f.close()
-			# y = self.read(out_file)
+			y = self.read(out_file)
 		except ValueError:
 			sys.stderr.write("Malformed output file;\n")
 			sys.stderr.write('\n')
