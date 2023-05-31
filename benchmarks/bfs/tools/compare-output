@@ -12,11 +12,11 @@ ref = open(sys.argv[1], "r")
 size = int(ref.readline()) 
 
 
-# cost_err = "Computed node cost does not match the expected values\n"
+cost_err = "Computed node cost does not match the expected values\n"
 
 
-comparison = fc.Sequence_([fc.Compare(tfc.float),
-	fc.Sequence_(itertools.repeat(fc.Compare(tfc.floats), size ))
+comparison = fc.Sequence_([fc.Compare(tfc.float, cost_err),
+	fc.Sequence_(itertools.repeat(fc.Compare(tfc.floats, cost_err), size ))
 	])
 
 fc.default_main(comparison)

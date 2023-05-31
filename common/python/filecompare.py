@@ -123,6 +123,8 @@ class For_(CompareMonad):
 # returns the value.
 class Compare(CompareMonad):
 	"""Read an item from both input files and compare it."""
+	def __init__(self, msg):
+		self.msg = msg
 
 			# read = open(),
 			# equal = lambda x, y : math.fabs(x - y) < 0.000001,
@@ -160,7 +162,7 @@ class Compare(CompareMonad):
 		if math.fabs(x, y) < 0.0000001:
 			return (True, x)
 		else:
-			sys.stderr.write('Output does not match the expected output')
+			sys.stderr.write(self.msg)
 			sys.stderr.write('\n')
 			return (False, None)
 
