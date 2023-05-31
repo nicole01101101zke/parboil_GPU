@@ -126,10 +126,10 @@ class Compare(CompareMonad):
 
 	def __init__(self,
 			# read = open(),
-			equal = lambda x, y : math.fabs(x - y) < 0.000001,
+			# equal = lambda x, y : math.fabs(x - y) < 0.000001,
 			message = "Output does not match the expected output"):
 		# self.read = read
-		self.equal = equal
+		# self.equal = equal
 		self.message = message
 
 	def run(self, ref_file, out_file):
@@ -158,7 +158,7 @@ class Compare(CompareMonad):
 			return (False, None)
 
 		# Compare reference data to result data
-		if self.equal(x, y):
+		if math.fabs(x, y) < 0.0000001:
 			return (True, x)
 		else:
 			sys.stderr.write(self.message)
