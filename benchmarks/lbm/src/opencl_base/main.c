@@ -200,10 +200,10 @@ void OpenCL_initialize(OpenCL_Param* prm)
 	prm->clCps[1] = (cl_context_properties)(prm->clPlatform);
 	prm->clCps[2] = 0;
 
-	clStatus = clGetDeviceIDs(prm->clPlatform,CL_DEVICE_TYPE_GPU,1,&(prm->clDevice),NULL);
+	clStatus = clGetDeviceIDs(prm->clPlatform,CL_DEVICE_TYPE_CPU,1,&(prm->clDevice),NULL);
 	CHECK_ERROR("clGetDeviceIDs")
 
-	prm->clContext = clCreateContextFromType(prm->clCps,CL_DEVICE_TYPE_GPU,NULL,NULL,&clStatus);
+	prm->clContext = clCreateContextFromType(prm->clCps,CL_DEVICE_TYPE_CPU,NULL,NULL,&clStatus);
 	CHECK_ERROR("clCreateContextFromType")
 
 	prm->clCommandQueue = clCreateCommandQueue(prm->clContext,prm->clDevice,CL_QUEUE_PROFILING_ENABLE,&clStatus);
