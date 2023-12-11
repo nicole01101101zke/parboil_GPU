@@ -28,7 +28,7 @@ int getOpenCLDevice(cl_platform_id *platform, cl_device_id *device, cl_device_ty
 
     cl_platform_id clPlatform = clPlatforms[ip];
     
-    OCL_SIMPLE_ERRCK_RETVAL ( clGetDeviceIDs(clPlatform, CL_DEVICE_TYPE_CPU, numEntries, clDevices, &numDevices) );
+    OCL_SIMPLE_ERRCK_RETVAL ( clGetDeviceIDs(clPlatform, CL_DEVICE_TYPE_GPU, numEntries, clDevices, &numDevices) );
     fprintf(stderr, "  Number of Devices found for Platform %d: %d\n", ip, numDevices);
     
     for (int id = 0; (id < numDevices) && needDevice ; ++id) {

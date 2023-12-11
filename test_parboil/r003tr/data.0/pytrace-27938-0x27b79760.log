@@ -1,0 +1,51 @@
+
+27938 : 0x22827b9b33b : 3 : logger_init :  LOG FILE OPENED (by collectunits.logger), level: 4
+27938 : 0x2282a838648 : 4 : probePythonFunctions :  PyThreadState_Swap
+27938 : 0x2282a908d73 : 4 : probePythonFunctions :  PyThreadState_Swap probed at 0x7ff2e96dc6e8
+27938 : 0x2282a90e96f : 4 : probePythonFunctions :  PyThreadState_Clear
+27938 : 0x2282aa29795 : 4 : probePythonFunctions :  PyThreadState_Clear probed at 0x7ff2e96dc720
+27938 : 0x2282aa2eef7 : 4 : probePythonFunctions :  Py_Initialize
+27938 : 0x2282aac5240 : 4 : probePythonFunctions :  Py_Initialize probed at 0x7ff2e96dc740
+27938 : 0x2282aaca7de : 4 : probePythonFunctions :  Py_InitializeEx
+27938 : 0x2282abb854a : 4 : probePythonFunctions :  Py_InitializeEx probed at 0x7ff2e96dc778
+27938 : 0x2282abbdc9f : 4 : probePythonFunctions :  PyOS_AfterFork_Child
+27938 : 0x2282ae25215 : 4 : probePythonFunctions :  PyOS_AfterFork_Child probed at 0x7ff2e96dc7b0
+27938 : 0x2282ae2abe6 : 4 : probePythonFunctions :  PyCode_New
+27938 : 0x2282aebb652 : 4 : probePythonFunctions :  PyCode_New probed at 0x7ff2e96dc7e8
+27938 : 0x2282aec0c23 : 4 : probePythonFunctions :  Py_FinalizeEx
+27938 : 0x2282b07e471 : 4 : probePythonFunctions :  Py_FinalizeEx probed at 0x7ff2e96dc808
+27938 : 0x2282b083e21 : 4 : probePythonFunctions :  _PyEval_EvalFrameDefault
+27938 : 0x228301a3f03 : 4 : probePythonFunctions :  _PyEval_EvalFrameDefault probed at 0x7ff2e96dc828
+27938 : 0x228301ac459 : 4 : probePythonFunctions :  PyCode_NewWithPosOnlyArgs
+27938 : 0x228303a2fbe : 4 : probePythonFunctions :  PyCode_NewWithPosOnlyArgs probed at 0x7ff2e96dc848
+27938 : 0x228303a8901 : 4 : probePythonFunctions :  Py_RunMain
+27938 : 0x228305c7fe2 : 4 : probePythonFunctions :  Py_RunMain probed at 0x7ff2e96dc868
+27938 : 0x228305cd68c : 4 : probePythonFunctions :  Py_InitializeFromConfig
+27938 : 0x228306d2248 : 4 : probePythonFunctions :  Py_InitializeFromConfig probed at 0x7ff2e96dc8a8
+27938 : 0x228306d77f6 : 4 : probePythonFunctions :  _PySignal_AfterFork
+27938 : 0x22830754699 : 4 : probePythonFunctions :  can't find in image
+27938 : 0x2283f651e82 : 4 : pytrace_start_profiling :  [CALLED]
+27938 : 0x2283f83da31 : 4 : Py_InitializeFromConfig :  [CALLED]
+27938 : 0x22841ea894c : 4 : Py_RunMain :  [CALLED]
+27967 : 0x228448f87d8 : 4 : pytrace_start_profiling :  [CALLED]
+27967 : 0x22844b9217c : 4 : pytrace_stop_profiling :  [CALLED]
+27938 : 0x228305c7fe2 : 4 : probePythonFunctions :  Py_RunMain probed at 0x7ff2e96dc868
+27938 : 0x228305cd68c : 4 : probePythonFunctions :  Py_InitializeFromConfig
+27938 : 0x228306d2248 : 4 : probePythonFunctions :  Py_InitializeFromConfig probed at 0x7ff2e96dc8a8
+27938 : 0x228306d77f6 : 4 : probePythonFunctions :  _PySignal_AfterFork
+27938 : 0x22830754699 : 4 : probePythonFunctions :  can't find in image
+27938 : 0x2283f651e82 : 4 : pytrace_start_profiling :  [CALLED]
+27938 : 0x2283f83da31 : 4 : Py_InitializeFromConfig :  [CALLED]
+27938 : 0x22841ea894c : 4 : Py_RunMain :  [CALLED]
+27981 : 0x228712d801b : 4 : pytrace_start_profiling :  [CALLED]
+27981 : 0x2287156354b : 4 : pytrace_stop_profiling :  [CALLED]
+27938 : 0x228305c7fe2 : 4 : probePythonFunctions :  Py_RunMain probed at 0x7ff2e96dc868
+27938 : 0x228305cd68c : 4 : probePythonFunctions :  Py_InitializeFromConfig
+27938 : 0x228306d2248 : 4 : probePythonFunctions :  Py_InitializeFromConfig probed at 0x7ff2e96dc8a8
+27938 : 0x228306d77f6 : 4 : probePythonFunctions :  _PySignal_AfterFork
+27938 : 0x22830754699 : 4 : probePythonFunctions :  can't find in image
+27938 : 0x2283f651e82 : 4 : pytrace_start_profiling :  [CALLED]
+27938 : 0x2283f83da31 : 4 : Py_InitializeFromConfig :  [CALLED]
+27938 : 0x22841ea894c : 4 : Py_RunMain :  [CALLED]
+27938 : 0x22898ba1724 : 4 : Py_FinalizeEx :  [CALLED]
+27938 : 0x22899af38d3 : 4 : pytrace_stop_profiling :  [CALLED]

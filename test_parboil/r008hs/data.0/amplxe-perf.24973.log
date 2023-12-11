@@ -1,0 +1,15 @@
+Using CPUID GenuineIntel-6-A5-3
+DEBUGINFOD_URLS=
+Compression enabled, disabling build id collection at the end of the session.
+nr_cblocks: 0
+affinity: SYS
+mmap flush: 1
+comp level: 1
+Problems creating module maps, continuing anyway...
+mmap size 528384B
+Control descriptor is not initialized
+
+24974:perf-sync:ready:TSC=2182756739677
+[ perf record: Woken up 1 times to write data ]
+failed to write feature HYBRID_TOPOLOGY
+[ perf record: Captured and wrote 0.009 MB /home/nicole/parboil/test_parboil/r008hs/data.0/temp.dryrun.perf, compressed (original 0.002 MB, ratio is 2.949) ]

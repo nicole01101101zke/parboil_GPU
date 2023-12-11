@@ -1,0 +1,64 @@
+threads_spec: cpu
+Using CPUID GenuineIntel-6-A5-3
+DEBUGINFOD_URLS=
+Compression enabled, disabling build id collection at the end of the session.
+nr_threads: 12
+thread_masks[0]: 0x55bf08758210: maps mask[12]: 0
+thread_masks[0]: 0x55bf08758220: affinity mask[12]: 0
+thread_masks[1]: 0x55bf08758230: maps mask[12]: 1
+thread_masks[1]: 0x55bf08758240: affinity mask[12]: 1
+thread_masks[2]: 0x55bf08758250: maps mask[12]: 2
+thread_masks[2]: 0x55bf08758260: affinity mask[12]: 2
+thread_masks[3]: 0x55bf08758270: maps mask[12]: 3
+thread_masks[3]: 0x55bf08758280: affinity mask[12]: 3
+thread_masks[4]: 0x55bf08758290: maps mask[12]: 4
+thread_masks[4]: 0x55bf087582a0: affinity mask[12]: 4
+thread_masks[5]: 0x55bf087582b0: maps mask[12]: 5
+thread_masks[5]: 0x55bf087582c0: affinity mask[12]: 5
+thread_masks[6]: 0x55bf087582d0: maps mask[12]: 6
+thread_masks[6]: 0x55bf087582e0: affinity mask[12]: 6
+thread_masks[7]: 0x55bf087582f0: maps mask[12]: 7
+thread_masks[7]: 0x55bf08758300: affinity mask[12]: 7
+thread_masks[8]: 0x55bf08758310: maps mask[12]: 8
+thread_masks[8]: 0x55bf08758320: affinity mask[12]: 8
+thread_masks[9]: 0x55bf08758330: maps mask[12]: 9
+thread_masks[9]: 0x55bf08758340: affinity mask[12]: 9
+thread_masks[10]: 0x55bf08758350: maps mask[12]: 10
+thread_masks[10]: 0x55bf08758360: affinity mask[12]: 10
+thread_masks[11]: 0x55bf08758370: maps mask[12]: 11
+thread_masks[11]: 0x55bf08758380: affinity mask[12]: 11
+nr_cblocks: 0
+affinity: SYS
+mmap flush: 1
+comp level: 1
+Problems creating module maps, continuing anyway...
+mmap size 528384B
+threads[26944]: started on cpu1
+threads[26945]: started on cpu2
+threads[26946]: started on cpu3
+threads[26947]: started on cpu4
+threads[26948]: started on cpu5
+threads[26949]: started on cpu6
+threads[26950]: started on cpu7
+threads[26951]: started on cpu8
+threads[26952]: started on cpu9
+threads[26953]: started on cpu10
+threads[26954]: started on cpu11
+threads[26942]: started on cpu0
+
+26943:perf-sync:ready:TSC=2813489711187
+[ perf record: Woken up 34 times to write data ]
+threads[26942]: samples=1, wakes=2, transferred=49184, compressed=9579
+threads[26944]: samples=1, wakes=3, transferred=2512, compressed=777
+threads[26945]: samples=1, wakes=2, transferred=64776, compressed=12565
+threads[26946]: samples=1, wakes=2, transferred=10240, compressed=2319
+threads[26947]: samples=1, wakes=2, transferred=64, compressed=74
+threads[26948]: samples=1, wakes=2, transferred=7624, compressed=1905
+threads[26949]: samples=1, wakes=2, transferred=62008, compressed=11849
+threads[26950]: samples=1, wakes=1, transferred=7688, compressed=1768
+threads[26951]: samples=1, wakes=9, transferred=2304, compressed=682
+threads[26952]: samples=1, wakes=2, transferred=5648, compressed=1549
+threads[26953]: samples=1, wakes=2, transferred=64, compressed=74
+threads[26954]: samples=10, wakes=8, transferred=1775832, compressed=276906
+failed to write feature HYBRID_TOPOLOGY
+[ perf record: Captured and wrote 0.320 MB /home/nicole/parboil/test_parboil/r012hs/data.0/26934.perf, compressed (original 1.896 MB, ratio is 6.211) ]

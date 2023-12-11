@@ -14,6 +14,8 @@ CXXFLAGS=$(APP_CXXFLAGS) $(LANG_CXXFLAGS) $(PLATFORM_CXXFLAGS)
 
 CUDACFLAGS=$(LANG_CUDACFLAGS) $(PLATFORM_CUDACFLAGS) $(APP_CUDACFLAGS) 
 CUDALDFLAGS=$(LANG_LDFLAGS) $(PLATFORM_CUDALDFLAGS) $(APP_CUDALDFLAGS)
+# $(warning "$(PLATFORM_CUDACFLAGS)")
+# $(warning "$(APP_CUDACFLAGS)")
 
 # Rules common to all makefiles
 
@@ -60,6 +62,14 @@ DEBUGGER=gdb
 endif
 
 OBJS = $(call INBUILDDIR,$(SRCDIR_OBJS))
+
+$(warning "$(BIN)")
+$(warning "$(RUNTIME_ENV)")
+$(warning "$(CUDA_LIB_PATH)")
+# /home/zke/parboil/common/mk/cuda.mk:66: "build/cuda_default/bfs"
+# /home/zke/parboil/common/mk/cuda.mk:67: ""
+# /home/zke/parboil/common/mk/cuda.mk:68: "/usr/local/cuda/lib64"
+
 
 ########################################
 # Rules
