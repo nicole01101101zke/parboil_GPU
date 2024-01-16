@@ -6,9 +6,9 @@
  *cr
  ***************************************************************************/
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+// #ifdef __cplusplus
+// extern "C" {
+// #endif
 
 void inputData(char* fName, int* _numK, int* _numX,
                float** kx, float** ky, float** kz,
@@ -17,6 +17,6 @@ void inputData(char* fName, int* _numK, int* _numX,
 
 void outputData(char* fName, float* outR, float* outI, int numX);
 
-#ifdef __cplusplus
-}
-#endif
+// #ifdef __cplusplus
+// }
+// #endif

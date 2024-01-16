@@ -1,0 +1,432 @@
+; ModuleID = '../benchmarks/lbm/src/opencl_base/kernel.cl'
+source_filename = "../benchmarks/lbm/src/opencl_base/kernel.cl"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+; Function Attrs: convergent nofree nounwind uwtable
+define dso_local spir_kernel void @performStreamCollide_kernel(float* nocapture readonly %0, float* nocapture %1) local_unnamed_addr #0 !kernel_arg_addr_space !3 !kernel_arg_access_qual !4 !kernel_arg_type !5 !kernel_arg_base_type !5 !kernel_arg_type_qual !6 {
+  %3 = getelementptr inbounds float, float* %0, i64 614400
+  %4 = getelementptr inbounds float, float* %1, i64 614400
+  %5 = tail call i64 @_Z12get_local_idj(i32 0) #3
+  %6 = trunc i64 %5 to i32
+  %7 = tail call i64 @_Z12get_group_idj(i32 0) #3
+  %8 = trunc i64 %7 to i32
+  %9 = tail call i64 @_Z12get_group_idj(i32 1) #3
+  %10 = trunc i64 %9 to i32
+  %11 = shl i32 %8, 7
+  %12 = add nsw i32 %11, %6
+  %13 = mul i32 %10, 15360
+  %14 = add nsw i32 %12, %13
+  %15 = mul nsw i32 %14, 20
+  %16 = sext i32 %15 to i64
+  %17 = getelementptr inbounds float, float* %3, i64 %16
+  %18 = load float, float* %17, align 4, !tbaa !7
+  %19 = add i32 %11, -128
+  %20 = add nsw i32 %19, %6
+  %21 = add nsw i32 %20, %13
+  %22 = mul nsw i32 %21, 20
+  %23 = or i32 %22, 1
+  %24 = sext i32 %23 to i64
+  %25 = getelementptr inbounds float, float* %3, i64 %24
+  %26 = load float, float* %25, align 4, !tbaa !7
+  %27 = add i32 %11, 128
+  %28 = add nsw i32 %27, %6
+  %29 = add nsw i32 %28, %13
+  %30 = mul nsw i32 %29, 20
+  %31 = or i32 %30, 2
+  %32 = sext i32 %31 to i64
+  %33 = getelementptr inbounds float, float* %3, i64 %32
+  %34 = load float, float* %33, align 4, !tbaa !7
+  %35 = add nsw i32 %6, -1
+  %36 = add nsw i32 %11, %35
+  %37 = add nsw i32 %36, %13
+  %38 = mul nsw i32 %37, 20
+  %39 = or i32 %38, 3
+  %40 = sext i32 %39 to i64
+  %41 = getelementptr inbounds float, float* %3, i64 %40
+  %42 = load float, float* %41, align 4, !tbaa !7
+  %43 = add nsw i32 %6, 1
+  %44 = add nsw i32 %11, %43
+  %45 = add nsw i32 %44, %13
+  %46 = mul nsw i32 %45, 20
+  %47 = add nsw i32 %46, 4
+  %48 = sext i32 %47 to i64
+  %49 = getelementptr inbounds float, float* %3, i64 %48
+  %50 = load float, float* %49, align 4, !tbaa !7
+  %51 = add i32 %13, -15360
+  %52 = add nsw i32 %51, %12
+  %53 = mul nsw i32 %52, 20
+  %54 = add nsw i32 %53, 5
+  %55 = sext i32 %54 to i64
+  %56 = getelementptr inbounds float, float* %3, i64 %55
+  %57 = load float, float* %56, align 4, !tbaa !7
+  %58 = add i32 %13, 15360
+  %59 = add nsw i32 %58, %12
+  %60 = mul nsw i32 %59, 20
+  %61 = add nsw i32 %60, 6
+  %62 = sext i32 %61 to i64
+  %63 = getelementptr inbounds float, float* %3, i64 %62
+  %64 = load float, float* %63, align 4, !tbaa !7
+  %65 = add i32 %13, %19
+  %66 = add i32 %65, %35
+  %67 = mul nsw i32 %66, 20
+  %68 = add nsw i32 %67, 7
+  %69 = sext i32 %68 to i64
+  %70 = getelementptr inbounds float, float* %3, i64 %69
+  %71 = load float, float* %70, align 4, !tbaa !7
+  %72 = add i32 %65, %43
+  %73 = mul nsw i32 %72, 20
+  %74 = add nsw i32 %73, 8
+  %75 = sext i32 %74 to i64
+  %76 = getelementptr inbounds float, float* %3, i64 %75
+  %77 = load float, float* %76, align 4, !tbaa !7
+  %78 = add i32 %13, %27
+  %79 = add i32 %78, %35
+  %80 = mul nsw i32 %79, 20
+  %81 = add nsw i32 %80, 9
+  %82 = sext i32 %81 to i64
+  %83 = getelementptr inbounds float, float* %3, i64 %82
+  %84 = load float, float* %83, align 4, !tbaa !7
+  %85 = add i32 %78, %43
+  %86 = mul nsw i32 %85, 20
+  %87 = add nsw i32 %86, 10
+  %88 = sext i32 %87 to i64
+  %89 = getelementptr inbounds float, float* %3, i64 %88
+  %90 = load float, float* %89, align 4, !tbaa !7
+  %91 = add nsw i32 %20, %51
+  %92 = mul nsw i32 %91, 20
+  %93 = add nsw i32 %92, 11
+  %94 = sext i32 %93 to i64
+  %95 = getelementptr inbounds float, float* %3, i64 %94
+  %96 = load float, float* %95, align 4, !tbaa !7
+  %97 = add nsw i32 %20, %58
+  %98 = mul nsw i32 %97, 20
+  %99 = add nsw i32 %98, 12
+  %100 = sext i32 %99 to i64
+  %101 = getelementptr inbounds float, float* %3, i64 %100
+  %102 = load float, float* %101, align 4, !tbaa !7
+  %103 = add nsw i32 %28, %51
+  %104 = mul nsw i32 %103, 20
+  %105 = add nsw i32 %104, 13
+  %106 = sext i32 %105 to i64
+  %107 = getelementptr inbounds float, float* %3, i64 %106
+  %108 = load float, float* %107, align 4, !tbaa !7
+  %109 = add nsw i32 %28, %58
+  %110 = mul nsw i32 %109, 20
+  %111 = add nsw i32 %110, 14
+  %112 = sext i32 %111 to i64
+  %113 = getelementptr inbounds float, float* %3, i64 %112
+  %114 = load float, float* %113, align 4, !tbaa !7
+  %115 = add nsw i32 %51, %36
+  %116 = mul nsw i32 %115, 20
+  %117 = add nsw i32 %116, 15
+  %118 = sext i32 %117 to i64
+  %119 = getelementptr inbounds float, float* %3, i64 %118
+  %120 = load float, float* %119, align 4, !tbaa !7
+  %121 = add nsw i32 %58, %36
+  %122 = mul nsw i32 %121, 20
+  %123 = add nsw i32 %122, 16
+  %124 = sext i32 %123 to i64
+  %125 = getelementptr inbounds float, float* %3, i64 %124
+  %126 = load float, float* %125, align 4, !tbaa !7
+  %127 = add nsw i32 %51, %44
+  %128 = mul nsw i32 %127, 20
+  %129 = add nsw i32 %128, 17
+  %130 = sext i32 %129 to i64
+  %131 = getelementptr inbounds float, float* %3, i64 %130
+  %132 = load float, float* %131, align 4, !tbaa !7
+  %133 = add nsw i32 %58, %44
+  %134 = mul nsw i32 %133, 20
+  %135 = add nsw i32 %134, 18
+  %136 = sext i32 %135 to i64
+  %137 = getelementptr inbounds float, float* %3, i64 %136
+  %138 = load float, float* %137, align 4, !tbaa !7
+  %139 = add nsw i32 %15, 19
+  %140 = sext i32 %139 to i64
+  %141 = getelementptr inbounds float, float* %3, i64 %140
+  %142 = bitcast float* %141 to i32*
+  %143 = load i32, i32* %142, align 4, !tbaa !7
+  %144 = and i32 %143, 1
+  %145 = icmp eq i32 %144, 0
+  br i1 %145, label %146, label %297
+
+146:                                              ; preds = %2
+  %147 = fadd float %18, %26
+  %148 = fadd float %147, %34
+  %149 = fadd float %148, %42
+  %150 = fadd float %149, %50
+  %151 = fadd float %150, %57
+  %152 = fadd float %151, %64
+  %153 = fadd float %152, %71
+  %154 = fadd float %153, %77
+  %155 = fadd float %154, %84
+  %156 = fadd float %155, %90
+  %157 = fadd float %156, %96
+  %158 = fadd float %157, %102
+  %159 = fadd float %158, %108
+  %160 = fadd float %159, %114
+  %161 = fadd float %160, %120
+  %162 = fadd float %161, %126
+  %163 = fadd float %162, %132
+  %164 = fadd float %163, %138
+  %165 = fsub float %42, %50
+  %166 = fadd float %165, %71
+  %167 = fsub float %166, %77
+  %168 = fadd float %167, %84
+  %169 = fsub float %168, %90
+  %170 = fadd float %169, %120
+  %171 = fadd float %170, %126
+  %172 = fsub float %171, %132
+  %173 = fsub float %172, %138
+  %174 = fsub float %26, %34
+  %175 = fadd float %174, %71
+  %176 = fadd float %175, %77
+  %177 = fsub float %176, %84
+  %178 = fsub float %177, %90
+  %179 = fadd float %178, %96
+  %180 = fadd float %179, %102
+  %181 = fsub float %180, %108
+  %182 = fsub float %181, %114
+  %183 = fsub float %57, %64
+  %184 = fadd float %183, %96
+  %185 = fsub float %184, %102
+  %186 = fadd float %185, %108
+  %187 = fsub float %186, %114
+  %188 = fadd float %187, %120
+  %189 = fsub float %188, %126
+  %190 = fadd float %189, %132
+  %191 = fsub float %190, %138
+  %192 = fdiv float %173, %164, !fpmath !11
+  %193 = fdiv float %182, %164, !fpmath !11
+  %194 = fdiv float %191, %164, !fpmath !11
+  %195 = and i32 %143, 2
+  %196 = icmp eq i32 %195, 0
+  %197 = select i1 %196, float %192, float 0x3F747AE140000000
+  %198 = select i1 %196, float %193, float 0x3F60624DE0000000
+  %199 = select i1 %196, float %194, float 0.000000e+00
+  %200 = fmul float %198, %198
+  %201 = tail call float @llvm.fmuladd.f32(float %197, float %197, float %200)
+  %202 = tail call float @llvm.fmuladd.f32(float %199, float %199, float %201)
+  %203 = tail call float @llvm.fmuladd.f32(float %202, float 1.500000e+00, float -1.000000e+00)
+  %204 = fmul float %164, 0x3FFF333340000000
+  %205 = fmul float %204, 0x3FD5555560000000
+  %206 = fneg float %203
+  %207 = fmul float %205, %206
+  %208 = tail call float @llvm.fmuladd.f32(float %18, float 0xBFEE666680000000, float %207)
+  %209 = fmul float %204, 0x3FAC71C720000000
+  %210 = tail call float @llvm.fmuladd.f32(float %198, float 4.500000e+00, float 3.000000e+00)
+  %211 = tail call float @llvm.fmuladd.f32(float %198, float %210, float %206)
+  %212 = fmul float %209, %211
+  %213 = tail call float @llvm.fmuladd.f32(float %26, float 0xBFEE666680000000, float %212)
+  %214 = tail call float @llvm.fmuladd.f32(float %198, float 4.500000e+00, float -3.000000e+00)
+  %215 = tail call float @llvm.fmuladd.f32(float %198, float %214, float %206)
+  %216 = fmul float %209, %215
+  %217 = tail call float @llvm.fmuladd.f32(float %34, float 0xBFEE666680000000, float %216)
+  %218 = tail call float @llvm.fmuladd.f32(float %199, float 4.500000e+00, float 3.000000e+00)
+  %219 = tail call float @llvm.fmuladd.f32(float %199, float %218, float %206)
+  %220 = fmul float %209, %219
+  %221 = tail call float @llvm.fmuladd.f32(float %57, float 0xBFEE666680000000, float %220)
+  %222 = tail call float @llvm.fmuladd.f32(float %199, float 4.500000e+00, float -3.000000e+00)
+  %223 = tail call float @llvm.fmuladd.f32(float %199, float %222, float %206)
+  %224 = fmul float %209, %223
+  %225 = tail call float @llvm.fmuladd.f32(float %64, float 0xBFEE666680000000, float %224)
+  %226 = tail call float @llvm.fmuladd.f32(float %197, float 4.500000e+00, float 3.000000e+00)
+  %227 = tail call float @llvm.fmuladd.f32(float %197, float %226, float %206)
+  %228 = fmul float %209, %227
+  %229 = tail call float @llvm.fmuladd.f32(float %42, float 0xBFEE666680000000, float %228)
+  %230 = tail call float @llvm.fmuladd.f32(float %197, float 4.500000e+00, float -3.000000e+00)
+  %231 = tail call float @llvm.fmuladd.f32(float %197, float %230, float %206)
+  %232 = fmul float %209, %231
+  %233 = tail call float @llvm.fmuladd.f32(float %50, float 0xBFEE666680000000, float %232)
+  %234 = fmul float %204, 0x3F9C71C720000000
+  %235 = fadd float %198, %199
+  %236 = tail call float @llvm.fmuladd.f32(float %235, float 4.500000e+00, float 3.000000e+00)
+  %237 = tail call float @llvm.fmuladd.f32(float %235, float %236, float %206)
+  %238 = fmul float %234, %237
+  %239 = tail call float @llvm.fmuladd.f32(float %96, float 0xBFEE666680000000, float %238)
+  %240 = fsub float %198, %199
+  %241 = tail call float @llvm.fmuladd.f32(float %240, float 4.500000e+00, float 3.000000e+00)
+  %242 = tail call float @llvm.fmuladd.f32(float %240, float %241, float %206)
+  %243 = fmul float %234, %242
+  %244 = tail call float @llvm.fmuladd.f32(float %102, float 0xBFEE666680000000, float %243)
+  %245 = fneg float %198
+  %246 = fsub float %199, %198
+  %247 = tail call float @llvm.fmuladd.f32(float %246, float 4.500000e+00, float 3.000000e+00)
+  %248 = tail call float @llvm.fmuladd.f32(float %246, float %247, float %206)
+  %249 = fmul float %234, %248
+  %250 = tail call float @llvm.fmuladd.f32(float %108, float 0xBFEE666680000000, float %249)
+  %251 = fsub float %245, %199
+  %252 = tail call float @llvm.fmuladd.f32(float %251, float 4.500000e+00, float 3.000000e+00)
+  %253 = tail call float @llvm.fmuladd.f32(float %251, float %252, float %206)
+  %254 = fmul float %234, %253
+  %255 = tail call float @llvm.fmuladd.f32(float %114, float 0xBFEE666680000000, float %254)
+  %256 = fadd float %197, %198
+  %257 = tail call float @llvm.fmuladd.f32(float %256, float 4.500000e+00, float 3.000000e+00)
+  %258 = tail call float @llvm.fmuladd.f32(float %256, float %257, float %206)
+  %259 = fmul float %234, %258
+  %260 = tail call float @llvm.fmuladd.f32(float %71, float 0xBFEE666680000000, float %259)
+  %261 = fsub float %197, %198
+  %262 = tail call float @llvm.fmuladd.f32(float %261, float 4.500000e+00, float 3.000000e+00)
+  %263 = tail call float @llvm.fmuladd.f32(float %261, float %262, float %206)
+  %264 = fmul float %234, %263
+  %265 = tail call float @llvm.fmuladd.f32(float %84, float 0xBFEE666680000000, float %264)
+  %266 = fadd float %197, %199
+  %267 = tail call float @llvm.fmuladd.f32(float %266, float 4.500000e+00, float 3.000000e+00)
+  %268 = tail call float @llvm.fmuladd.f32(float %266, float %267, float %206)
+  %269 = fmul float %234, %268
+  %270 = tail call float @llvm.fmuladd.f32(float %120, float 0xBFEE666680000000, float %269)
+  %271 = fsub float %197, %199
+  %272 = tail call float @llvm.fmuladd.f32(float %271, float 4.500000e+00, float 3.000000e+00)
+  %273 = tail call float @llvm.fmuladd.f32(float %271, float %272, float %206)
+  %274 = fmul float %234, %273
+  %275 = tail call float @llvm.fmuladd.f32(float %126, float 0xBFEE666680000000, float %274)
+  %276 = fneg float %197
+  %277 = fsub float %198, %197
+  %278 = tail call float @llvm.fmuladd.f32(float %277, float 4.500000e+00, float 3.000000e+00)
+  %279 = tail call float @llvm.fmuladd.f32(float %277, float %278, float %206)
+  %280 = fmul float %234, %279
+  %281 = tail call float @llvm.fmuladd.f32(float %77, float 0xBFEE666680000000, float %280)
+  %282 = fsub float %276, %198
+  %283 = tail call float @llvm.fmuladd.f32(float %282, float 4.500000e+00, float 3.000000e+00)
+  %284 = tail call float @llvm.fmuladd.f32(float %282, float %283, float %206)
+  %285 = fmul float %234, %284
+  %286 = tail call float @llvm.fmuladd.f32(float %90, float 0xBFEE666680000000, float %285)
+  %287 = fsub float %199, %197
+  %288 = tail call float @llvm.fmuladd.f32(float %287, float 4.500000e+00, float 3.000000e+00)
+  %289 = tail call float @llvm.fmuladd.f32(float %287, float %288, float %206)
+  %290 = fmul float %234, %289
+  %291 = tail call float @llvm.fmuladd.f32(float %132, float 0xBFEE666680000000, float %290)
+  %292 = fsub float %276, %199
+  %293 = tail call float @llvm.fmuladd.f32(float %292, float 4.500000e+00, float 3.000000e+00)
+  %294 = tail call float @llvm.fmuladd.f32(float %292, float %293, float %206)
+  %295 = fmul float %234, %294
+  %296 = tail call float @llvm.fmuladd.f32(float %138, float 0xBFEE666680000000, float %295)
+  br label %297
+
+297:                                              ; preds = %2, %146
+  %298 = phi float [ %229, %146 ], [ %50, %2 ]
+  %299 = phi float [ %233, %146 ], [ %42, %2 ]
+  %300 = phi float [ %221, %146 ], [ %64, %2 ]
+  %301 = phi float [ %225, %146 ], [ %57, %2 ]
+  %302 = phi float [ %260, %146 ], [ %90, %2 ]
+  %303 = phi float [ %281, %146 ], [ %84, %2 ]
+  %304 = phi float [ %265, %146 ], [ %77, %2 ]
+  %305 = phi float [ %286, %146 ], [ %71, %2 ]
+  %306 = phi float [ %239, %146 ], [ %114, %2 ]
+  %307 = phi float [ %244, %146 ], [ %108, %2 ]
+  %308 = phi float [ %250, %146 ], [ %102, %2 ]
+  %309 = phi float [ %255, %146 ], [ %96, %2 ]
+  %310 = phi float [ %270, %146 ], [ %138, %2 ]
+  %311 = phi float [ %275, %146 ], [ %132, %2 ]
+  %312 = phi float [ %291, %146 ], [ %126, %2 ]
+  %313 = phi float [ %296, %146 ], [ %120, %2 ]
+  %314 = phi float [ %217, %146 ], [ %26, %2 ]
+  %315 = phi float [ %213, %146 ], [ %34, %2 ]
+  %316 = phi float [ %208, %146 ], [ %18, %2 ]
+  %317 = getelementptr inbounds float, float* %4, i64 %16
+  store float %316, float* %317, align 4, !tbaa !7
+  %318 = or i32 %15, 1
+  %319 = sext i32 %318 to i64
+  %320 = getelementptr inbounds float, float* %4, i64 %319
+  store float %315, float* %320, align 4, !tbaa !7
+  %321 = or i32 %15, 2
+  %322 = sext i32 %321 to i64
+  %323 = getelementptr inbounds float, float* %4, i64 %322
+  store float %314, float* %323, align 4, !tbaa !7
+  %324 = or i32 %15, 3
+  %325 = sext i32 %324 to i64
+  %326 = getelementptr inbounds float, float* %4, i64 %325
+  store float %298, float* %326, align 4, !tbaa !7
+  %327 = add nsw i32 %15, 4
+  %328 = sext i32 %327 to i64
+  %329 = getelementptr inbounds float, float* %4, i64 %328
+  store float %299, float* %329, align 4, !tbaa !7
+  %330 = add nsw i32 %15, 5
+  %331 = sext i32 %330 to i64
+  %332 = getelementptr inbounds float, float* %4, i64 %331
+  store float %300, float* %332, align 4, !tbaa !7
+  %333 = add nsw i32 %15, 6
+  %334 = sext i32 %333 to i64
+  %335 = getelementptr inbounds float, float* %4, i64 %334
+  store float %301, float* %335, align 4, !tbaa !7
+  %336 = add nsw i32 %15, 7
+  %337 = sext i32 %336 to i64
+  %338 = getelementptr inbounds float, float* %4, i64 %337
+  store float %302, float* %338, align 4, !tbaa !7
+  %339 = add nsw i32 %15, 8
+  %340 = sext i32 %339 to i64
+  %341 = getelementptr inbounds float, float* %4, i64 %340
+  store float %303, float* %341, align 4, !tbaa !7
+  %342 = add nsw i32 %15, 9
+  %343 = sext i32 %342 to i64
+  %344 = getelementptr inbounds float, float* %4, i64 %343
+  store float %304, float* %344, align 4, !tbaa !7
+  %345 = add nsw i32 %15, 10
+  %346 = sext i32 %345 to i64
+  %347 = getelementptr inbounds float, float* %4, i64 %346
+  store float %305, float* %347, align 4, !tbaa !7
+  %348 = add nsw i32 %15, 11
+  %349 = sext i32 %348 to i64
+  %350 = getelementptr inbounds float, float* %4, i64 %349
+  store float %306, float* %350, align 4, !tbaa !7
+  %351 = add nsw i32 %15, 12
+  %352 = sext i32 %351 to i64
+  %353 = getelementptr inbounds float, float* %4, i64 %352
+  store float %307, float* %353, align 4, !tbaa !7
+  %354 = add nsw i32 %15, 13
+  %355 = sext i32 %354 to i64
+  %356 = getelementptr inbounds float, float* %4, i64 %355
+  store float %308, float* %356, align 4, !tbaa !7
+  %357 = add nsw i32 %15, 14
+  %358 = sext i32 %357 to i64
+  %359 = getelementptr inbounds float, float* %4, i64 %358
+  store float %309, float* %359, align 4, !tbaa !7
+  %360 = add nsw i32 %15, 15
+  %361 = sext i32 %360 to i64
+  %362 = getelementptr inbounds float, float* %4, i64 %361
+  store float %310, float* %362, align 4, !tbaa !7
+  %363 = add nsw i32 %15, 16
+  %364 = sext i32 %363 to i64
+  %365 = getelementptr inbounds float, float* %4, i64 %364
+  store float %311, float* %365, align 4, !tbaa !7
+  %366 = add nsw i32 %15, 17
+  %367 = sext i32 %366 to i64
+  %368 = getelementptr inbounds float, float* %4, i64 %367
+  store float %312, float* %368, align 4, !tbaa !7
+  %369 = add nsw i32 %15, 18
+  %370 = sext i32 %369 to i64
+  %371 = getelementptr inbounds float, float* %4, i64 %370
+  store float %313, float* %371, align 4, !tbaa !7
+  ret void
+}
+
+; Function Attrs: convergent nounwind readnone
+declare dso_local i64 @_Z12get_local_idj(i32) local_unnamed_addr #1
+
+; Function Attrs: convergent nounwind readnone
+declare dso_local i64 @_Z12get_group_idj(i32) local_unnamed_addr #1
+
+; Function Attrs: nounwind readnone speculatable willreturn
+declare float @llvm.fmuladd.f32(float, float, float) #2
+
+attributes #0 = { convergent nofree nounwind uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "denorms-are-zero"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "uniform-work-group-size"="false" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { convergent nounwind readnone "correctly-rounded-divide-sqrt-fp-math"="false" "denorms-are-zero"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #2 = { nounwind readnone speculatable willreturn }
+attributes #3 = { convergent nounwind readnone }
+
+!llvm.module.flags = !{!0}
+!opencl.ocl.version = !{!1}
+!llvm.ident = !{!2}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{i32 2, i32 0}
+!2 = !{!"clang version 10.0.0-4ubuntu1 "}
+!3 = !{i32 1, i32 1}
+!4 = !{!"none", !"none"}
+!5 = !{!"float*", !"float*"}
+!6 = !{!"", !""}
+!7 = !{!8, !8, i64 0}
+!8 = !{!"float", !9, i64 0}
+!9 = !{!"omnipotent char", !10, i64 0}
+!10 = !{!"Simple C/C++ TBAA"}
+!11 = !{float 2.500000e+00}

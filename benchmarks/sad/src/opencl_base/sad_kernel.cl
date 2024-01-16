@@ -18,7 +18,7 @@
  * 32 threads per 4-by-4 pixel block.
  *
  */
- 
+
 // AMD OpenCL fails UINT_CUDA_V
 #if 1
   #define SHORT2_V 1
